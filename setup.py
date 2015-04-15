@@ -2,8 +2,6 @@
 Installer for ci-yml
 """
 
-import shutils
-
 try:
         from setuptools import setup, find_packages
 except ImportError:
@@ -19,13 +17,11 @@ setup(
     author_email='c.mignanti[at]gmail[dot]com',
     url='http://github.com/claudyus/ci-yml',
     packages=find_packages(exclude=['ez_setup']),
+    scripts=['bin/ci-yml'],
     install_requires=open('requirements.txt').readlines(),
     include_package_data=True,
-    extras_require={
-        'plugins': open('extras_requirements.txt').readlines(),
-    },
-    entry_points={
-        'console_scripts': ['ci-yml = ci-yml:main',],
-    },
+#   extras_require={
+#       'plugins': open('extras_requirements.txt').readlines(),
+#   },
     license='MIT'
 )
