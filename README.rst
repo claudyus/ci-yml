@@ -40,6 +40,6 @@ and::
 
   ci-yml build_doc
 
-respectively. If you have also e deploy job you should also setup the gitlab-ci deploy job with the only command::
+respectively. If you have also a deploy job you should also setup the gitlab-ci deploy job with the only command::
 
   ci-yml deploy 
