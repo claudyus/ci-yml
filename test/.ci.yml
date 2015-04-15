@@ -2,6 +2,7 @@ prepare:
 - echo `date` > /tmp/op1
 - echo `hostname` > /tmp/op2
 - mktemp
+- exit 2
 
 test:
   test1:
