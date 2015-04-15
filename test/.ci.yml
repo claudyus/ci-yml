@@ -1,0 +1,14 @@
+prepare:
+- echo `date` > /tmp/op1
+- echo `hostname` > /tmp/op2
+- mktemp
+
+test:
+  test1:
+    - ls /tmp/op*
+    - exit 1
+  build_doc:
+    - ls /tmp/tmp.*
+
+deploy:
+  - cat /tmp/op* > /tmp/deployed
