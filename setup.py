@@ -29,6 +29,7 @@ setup(
     scripts=['bin/ci-yml'],
     install_requires=open('requirements.txt').readlines(),
     include_package_data=True,
+    download_url='https://github.com/claudyus/ci-yml/tarball/{}'.format(git_version()),
 #   extras_require={
 #       'plugins': open('extras_requirements.txt').readlines(),
 #   },
