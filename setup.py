@@ -12,7 +12,7 @@ except ImportError:
 
 def git_version():
     try:
-        return subprocess.check_output('git describe --always --tags', shell=True).strip()
+        return subprocess.check_output('git describe --always --tags | cut -d '-' -f 1-2', shell=True).replace('-', '.').strip()
     except:
         return "0.2"
 
@@ -24,7 +24,7 @@ setup(
     author='Claudio Mignanti',
     author_email='c.mignanti[at]gmail[dot]com',
     url='http://github.com/claudyus/ci-yml',
-    packages=find_packages(exclude=['ez_setup']),
+    packages=['ci-yml'],
     scripts=['bin/ci-yml'],
     install_requires=open('requirements.txt').readlines(),
     include_package_data=True,
