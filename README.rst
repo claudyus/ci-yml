@@ -57,6 +57,18 @@ ci-yml extend the env variables with the follows:
 To see the gitlab environment variables see https://gitlab.com/gitlab-org/gitlab-ci/tree/master/doc/examples#environmental-variables
 Travis envs doc are available at http://docs.travis-ci.com/user/environment-variables/
 
+You can also define extra env vars using the `envs` block, the newly defined vars can also combine other env vars. For example::
+
+  envs:
+    pub_path: "/var/www/$USER/$CI_BUILD_REF"
+
+  ...
+
+  deploy:
+    - cp *.out $PUB_PATH
+
+**Note**: For your convenience you can define the vars as lower case inside the `envs` block but they MUST be used upper case inside the command.
+
 ci-yml and travis
 ^^^^^^^^^^^^^^^^^
 
