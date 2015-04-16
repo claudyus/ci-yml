@@ -14,7 +14,7 @@ def git_version():
     try:
         return subprocess.check_output('git describe --always --tags | cut -d \'-\' -f 1-2', shell=True).replace('-', '.').strip()
     except:
-        return "0.2"
+        return "0.3"
 
 setup(
     name='ci-yml',
