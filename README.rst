@@ -57,6 +57,6 @@ Travis envs doc are available at http://docs.travis-ci.com/user/environment-vari
 ci-yml and travis
 ^^^^^^^^^^^^^^^^^
 
-This project is intendet to supply a job configuration option inside gitlab-ci that don't have any atm otherwise the it could be useful also in other scenario.
+This project was intended to supply a job configuration method to gitlab-ci that don't have any one atm, otherwise it could be useful also in others use cases.
 
-You can use ci-yml locally during developing and you can also call it inside `.travis.yml`, see the local travis config file for info
+You can use ci-yml locally during developing and you can also call it inside `.travis.yml`, see the local travis config file for info.

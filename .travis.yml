@@ -1,6 +1,10 @@
+# generally the before_script is overrided bi ci-yml:prepare
+# otherwise in this case I should use `sudo` on travis and not
+# locally (due to virtualenv)
 before_script:
   - sudo python ./setup.py develop
   - sudo pip install -r extra_requirements.txt
 
+# run the ci-yml job unittest
 script:
   - ci-yml unittest

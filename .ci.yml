@@ -1,3 +1,4 @@
+#install deps in virtualenv
 prepare:
   - python setup.py develop
   - pip install -r extra_requirements.txt
