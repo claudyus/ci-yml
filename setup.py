@@ -12,9 +12,10 @@ except ImportError:
 
 def git_version():
     try:
-        return subprocess.check_output('git describe --always --tags', shell=True)
+        out = subprocess.check_output('git describe --always --tags', shell=True)
+        return out.replace('-', '').strip()
     except:
-        return "no-git-repo"
+        raise "no-git-repo"
 
 setup(
     name='ci-yml',
