@@ -4,7 +4,7 @@ prepare:
 - mktemp
 - exit 2
 
-test:
+jobs:
   test1:
     - touch /tmp/fail_test1
     - exit 1

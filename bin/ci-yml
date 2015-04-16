@@ -29,10 +29,10 @@ if __name__ == "__main__":
     if ops.has_key('prepare'):
         run_subtree(ops['prepare'], ignore_errors=True)
 
-    if ops.has_key('test'):
+    if ops.has_key('jobs'):
         for arg in sys.argv[1:]:
-            if arg in ops['test']:
-                run_subtree(ops['test'][arg])
+            if arg in ops['jobs']:
+                run_subtree(ops['jobs'][arg])
 
     if ops.has_key('deploy') and 'deploy' in sys.argv[1:]:
         run_subtree(ops['deploy'])

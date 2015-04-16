@@ -1,6 +1,6 @@
 prepare:
   - python setup.py develop
 
-test:
+jobs:
   unittest:
     - cd tests && nosetests test.py

@@ -10,7 +10,7 @@ This is a .ci.yml example file::
   prepare:
     - <shell command>
     - <shell command>
-  test:
+  jobs:
     <jobname>:
       - <shell command>
     <jobname>:
@@ -19,20 +19,20 @@ This is a .ci.yml example file::
     - <shell command>
     - <shell command>
 
-For example a series of test that require the installation of additional package could be::
+In the example below we have two jobs, a `prepare` job used to install additional package::
 
   prepare:
     - pip install pyyaml
 
-  test:
+  jobs:
     test1:
       - python ./test1.py
     build_doc:
       - make doc
 
-In the example above the commands inside `prepare` block are executed before that any other jobs is executed.
+The commands inside `prepare` block are executed before that any other jobs is executed and the errors are ignored.
 
-Following this example you should configure two test jobs in you gitlab-ci instance and just call::
+Following the example above you should configure two test jobs in you gitlab-ci instance and just call::
 
   ci-yml test1 
 
