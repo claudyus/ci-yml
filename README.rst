@@ -1,5 +1,5 @@
-.ci.yml parser for gitlab-ci
-=============================
+.ci.yml parser/runner for Gitlab-CI
+===================================
 
 .. image:: https://travis-ci.org/claudyus/ci-yml.svg?branch=master
     :target: https://travis-ci.org/claudyus/ci-yml
