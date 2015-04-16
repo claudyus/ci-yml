@@ -12,7 +12,7 @@ except ImportError:
 
 def git_version():
     try:
-        return subprocess.check_output('git describe --always --tags | cut -d '-' -f 1-2', shell=True).replace('-', '.').strip()
+        return subprocess.check_output('git describe --always --tags | cut -d \'-\' -f 1-2', shell=True).replace('-', '.').strip()
     except:
         return "0.2"
 
@@ -26,7 +26,7 @@ setup(
     url='http://github.com/claudyus/ci-yml',
     packages=['ci-yml'],
     scripts=['bin/ci-yml'],
-    install_requires=open('requirements.txt').readlines(),
+    install_requires=['pyyaml'],
     include_package_data=True,
     download_url='https://github.com/claudyus/ci-yml/tarball/{}'.format(git_version()),
 #   extras_require={
