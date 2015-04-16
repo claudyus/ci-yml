@@ -15,7 +15,7 @@ jobs:
   build_doc:
     - touch /tmp/build_doc
   env_test:
-    - env
+    - echo $CI_YML_JOB
     - touch $MY_PATH
 
 deploy:

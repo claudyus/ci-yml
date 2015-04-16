@@ -39,7 +39,6 @@ if __name__ == "__main__":
             value = os.path.expandvars(ops['envs'][key])
             env.update({ upper_key: value })
 
-    print env
     if ops.has_key('prepare'):
         run_subtree(ops['prepare'], ignore_errors=True , env_extra=env)
 
