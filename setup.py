@@ -1,6 +1,7 @@
 """
 Installer for ci-yml
 """
+import subprocess
 
 try:
         from setuptools import setup, find_packages
@@ -8,11 +9,18 @@ except ImportError:
         from ez_setup import use_setuptools
         use_setuptools()
         from setuptools import setup, find_packages
+
+def git_version():
+    try:
+        return subprocess.check_output('git describe --always --tags', shell=True)
+    except:
+        return "no-git-repo"
+
 setup(
     name='ci-yml',
     description='A .ci.yml parser for Gitlab-CI',
     long_description=open('README.rst').read(),
-    version='unreleased', #FIXME
+    version=git_version(),
     author='Claudio Mignanti',
     author_email='c.mignanti[at]gmail[dot]com',
     url='http://github.com/claudyus/ci-yml',
