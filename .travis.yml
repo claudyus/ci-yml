@@ -1,4 +1,6 @@
-# generally the before_script is overrided bi ci-yml:prepare
+language: python
+
+# generaly the before_script is overrided bi ci-yml:prepare
 # otherwise in this case I should use `sudo` on travis and not
 # locally (due to virtualenv)
 before_script:
