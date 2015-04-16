@@ -6,10 +6,10 @@ prepare:
 
 test:
   test1:
-    - ls /tmp/op*
+    - touch /tmp/fail_test1
     - exit 1
   build_doc:
-    - ls /tmp/tmp.*
+    - touch /tmp/build_doc
 
 deploy:
   - cat /tmp/op* > /tmp/deployed
