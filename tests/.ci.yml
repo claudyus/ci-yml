@@ -1,3 +1,7 @@
+envs:
+  my_env: "test"
+  my_path: "/tmp/$USER"
+
 prepare:
 - echo `date` > /tmp/op1
 - echo `hostname` > /tmp/op2
@@ -12,6 +16,7 @@ jobs:
     - touch /tmp/build_doc
   env_test:
     - env
+    - touch $MY_PATH
 
 deploy:
   - cat /tmp/op* > /tmp/deployed

@@ -36,6 +36,11 @@ class TestCmdLine(unittest.TestCase):
     def test_40(self):
         assert 'env_test' in subprocess.check_output('ci-yml env_test', shell=True)
 
+    def test_50(self):
+        user = os.environ['USER']
+        rmfile('/tmp/{}'.format(user))
+        subprocess.check_output('ci-yml env_test', shell=True)
+        assert os.path.exists('/tmp/{}'.format(user))
 
 if __name__ == '__main__':
     unittest.main()
