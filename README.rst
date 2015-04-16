@@ -1,6 +1,9 @@
 .ci.yml parser for gitlab-ci
 =============================
 
+.. image:: https://travis-ci.org/claudyus/ci-yml.svg?branch=master
+    :target: https://travis-ci.org/claudyus/ci-yml
+
 The ci-yml utilities read the local .ci.yml file and run a series of action grouped under jobs.
 
 The .ci.yml file may define a `deploy` job and a list of other parallel jobs that can be assigned 1-to-1 with the gitlab-CI `test` jobs.
