@@ -1,5 +1,6 @@
 before_script:
   - sudo python ./setup.py develop
+  - sudo pip install -r extra_requirements.txt
 
 script:
   - ci-yml unittest
