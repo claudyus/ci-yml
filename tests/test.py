@@ -33,5 +33,9 @@ class TestCmdLine(unittest.TestCase):
         subprocess.check_output('ci-yml deploy', shell=True)
         assert os.path.exists('/tmp/deployed')
 
+    def test_40(self):
+        assert 'env_test' in subprocess.check_output('ci-yml env_test', shell=True)
+
+
 if __name__ == '__main__':
     unittest.main()

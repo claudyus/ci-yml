@@ -4,13 +4,20 @@
 import subprocess
 import yaml
 import sys
+import os
 
 
-def run_subtree(arr_elems, ignore_errors=False):
+def run_subtree(arr_elems, ignore_errors=False, env_extra=None):
+
+    #setup env
+    env = os.environ
+    env.update(env_extra)
+
+    # run commands
     for elem in arr_elems:
         print " * " + elem # print back command...
         try:
-            subprocess.check_call(elem, shell=True)
+            subprocess.check_call(elem, shell=True, env=env)
         except subprocess.CalledProcessError as e:
             if ignore_errors:
                 pass
@@ -32,7 +39,8 @@ if __name__ == "__main__":
     if ops.has_key('jobs'):
         for arg in sys.argv[1:]:
             if arg in ops['jobs']:
-                run_subtree(ops['jobs'][arg])
+                env = {'CI_YML_JOB': arg}
+                run_subtree(ops['jobs'][arg], env_extra=env)
 
     if ops.has_key('deploy') and 'deploy' in sys.argv[1:]:
         run_subtree(ops['deploy'])

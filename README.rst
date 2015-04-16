@@ -44,6 +44,16 @@ respectively. If you have also a deploy job you should also setup the gitlab-ci 
 
   ci-yml deploy
 
+Environment variables
+^^^^^^^^^^^^^^^^^^^^^^^
+
+ci-yml extend the env variables with the follows:
+
+  - CI_YML_JOB
+
+To see the gitlab environment variables see https://gitlab.com/gitlab-org/gitlab-ci/tree/master/doc/examples#environmental-variables
+Travis envs doc are available at http://docs.travis-ci.com/user/environment-variables/
+
 ci-yml and travis
 ^^^^^^^^^^^^^^^^^
 
