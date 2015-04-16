@@ -1,0 +1,5 @@
+before_script:
+  - sudo python ./setup.py develop
+
+script:
+  - ci-yml unittest
