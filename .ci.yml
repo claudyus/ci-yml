@@ -6,3 +6,4 @@ prepare:
 jobs:
   unittest:
     - cd tests && nosetests test.py
+    - flake8 bin/*

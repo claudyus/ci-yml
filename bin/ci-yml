@@ -9,13 +9,13 @@ import os
 
 def run_commands(arr_elems, ignore_errors=False, env_extra=None):
 
-    #setup env
+    # setup env
     env = os.environ
     env.update(env_extra)
 
     # run commands
     for elem in arr_elems:
-        print " * " + elem # print back command...
+        print " * " + elem      # print back command...
         try:
             subprocess.check_call(elem, shell=True, env=env)
         except subprocess.CalledProcessError as e:
@@ -33,16 +33,16 @@ if __name__ == "__main__":
     stream = open(".ci.yml", "r")
     ops = yaml.load(stream)
 
-    if ops.has_key('envs'):
+    if 'envs' in ops:
         for key in ops['envs']:
             upper_key = key.upper()
             value = os.path.expandvars(ops['envs'][key])
-            env.update({ upper_key: value })
+            env.update({upper_key: value})
 
-    if ops.has_key('prepare'):
-        run_commands(ops['prepare'], ignore_errors=True , env_extra=env)
+    if 'prepare' in ops:
+        run_commands(ops['prepare'], ignore_errors=True, env_extra=env)
 
-    if ops.has_key('jobs'):
+    if 'jobs' in ops:
         if len(sys.argv[1:]) > 0:
             # if a specific jobname is provided run it
             for job in sys.argv[1:]:
@@ -55,5 +55,5 @@ if __name__ == "__main__":
                 env.update({'CI_YML_JOB': job})
                 run_commands(ops['jobs'][job], env_extra=env)
 
-    if ops.has_key('deploy') and 'deploy' in sys.argv[1:]:
+    if 'deploy' in ops and 'deploy' in sys.argv[1:]:
         run_commands(ops['deploy'], env_extra=env)
