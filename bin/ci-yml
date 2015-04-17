@@ -7,7 +7,7 @@ import sys
 import os
 
 
-def run_subtree(arr_elems, ignore_errors=False, env_extra=None):
+def run_commands(arr_elems, ignore_errors=False, env_extra=None):
 
     #setup env
     env = os.environ
@@ -40,13 +40,20 @@ if __name__ == "__main__":
             env.update({ upper_key: value })
 
     if ops.has_key('prepare'):
-        run_subtree(ops['prepare'], ignore_errors=True , env_extra=env)
+        run_commands(ops['prepare'], ignore_errors=True , env_extra=env)
 
     if ops.has_key('jobs'):
-        for arg in sys.argv[1:]:
-            if arg in ops['jobs']:
-                env.update({'CI_YML_JOB': arg})
-                run_subtree(ops['jobs'][arg], env_extra=env)
+        if len(sys.argv[1:]) > 0:
+            # if a specific jobname is provided run it
+            for job in sys.argv[1:]:
+                if job in ops['jobs']:
+                    env.update({'CI_YML_JOB': job})
+                    run_commands(ops['jobs'][job], env_extra=env)
+        else:
+            # if no jobname is provided run all jobs by default
+            for job in ops['jobs']:
+                env.update({'CI_YML_JOB': job})
+                run_commands(ops['jobs'][job], env_extra=env)
 
     if ops.has_key('deploy') and 'deploy' in sys.argv[1:]:
-        run_subtree(ops['deploy'], env_extra=env)
+        run_commands(ops['deploy'], env_extra=env)

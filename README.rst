@@ -47,6 +47,8 @@ respectively. If you have also a deploy job you should also setup the gitlab-ci 
 
   ci-yml deploy
 
+If no arguments are provided to ```ci-yml``` all the jobs are executed until the first one fails or all jobs are runned than deploy action take place
+
 Environment variables
 ^^^^^^^^^^^^^^^^^^^^^^^
 

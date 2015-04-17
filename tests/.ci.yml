@@ -9,11 +9,11 @@ prepare:
 - exit 2
 
 jobs:
+  build_doc:
+    - touch /tmp/build_doc
   test1:
     - touch /tmp/fail_test1
     - exit 1
-  build_doc:
-    - touch /tmp/build_doc
   env_test:
     - echo $CI_YML_JOB
     - touch $MY_PATH

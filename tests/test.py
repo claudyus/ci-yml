@@ -9,14 +9,24 @@ def rmfile(filename):
 
 class TestCmdLine(unittest.TestCase):
 
-    def test_00(self):
+    def test_60(self):
+        """
+            test that al jobs are runned if no jobname is provided, test prepare
+        """
         rmfile('/tmp/op1')
         rmfile('/tmp/op2')
-        subprocess.check_output('ci-yml', shell=True)
-        assert os.path.exists('/tmp/op1')
+        rmfile('/tmp/build_doc')
+        rmfile('/tmp/fail_test1')
+        try:
+            subprocess.check_output('ci-yml', shell=True)
+        except:
+            #assert os.path.exists('/tmp/build_doc')
+            assert os.path.exists('/tmp/fail_test1')
+            assert os.path.exists('/tmp/op1')
+            assert os.path.exists('/tmp/op2')
 
     def test_10(self):
-        """ test1 should raise exception """
+        """ job test1 should raise exception """
         rmfile('/tmp/fail_test1')
         try:
             subprocess.check_output('ci-yml test1', shell=True)
@@ -41,6 +51,7 @@ class TestCmdLine(unittest.TestCase):
         rmfile('/tmp/{}'.format(user))
         subprocess.check_output('ci-yml env_test', shell=True)
         assert os.path.exists('/tmp/{}'.format(user))
+
 
 if __name__ == '__main__':
     unittest.main()
